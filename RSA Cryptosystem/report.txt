@@ -1,24 +1,3 @@
-1. Enter the number of hours it took you to complete the project between
-   the <<< and >>> signs below (eg, <<<10>>>).
-
-   <<< 35 >>>
-   
-2. Enter the difficulty level (1: very easy; 5: very difficult) of the project
-   between the <<< and >>> signs below (eg, <<<3>>>).
-
-   <<< 4 >>>
-
-3. Did you receive help from anyone? List their names, status (classmate, 
-   CS110 grad, TA, other), and the nature of help received.
-
-   Name               Status       Help Received
-   ----               ------       -------------
-
-   ...                ...          ...
-
-4. Provide a short description of how you approached each problem, issues you 
-   encountered, and how you resolved those issues.
-
    Problem 1 (RSA Library)
       Approach: defined encrypt and decrypt using the formula given in the directions.
       Defined _primes(lo,hi) by setting an empty string.
@@ -60,9 +39,3 @@
 
       Issues and resolution: I did not face any issue in this problem.
 
-5. List any other comments here. Feel free to provide any feedback on how
-   much you learned from doing the assignment, and whether you enjoyed
-   doing it.
-
-   This project was a bit more challenging than the previous ones, however I managed to solve it and submit it.
-   I enjoyed this project a lot.
