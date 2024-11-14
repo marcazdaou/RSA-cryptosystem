@@ -1,0 +1,68 @@
+1. Enter the number of hours it took you to complete the project between
+   the <<< and >>> signs below (eg, <<<10>>>).
+
+   <<< 35 >>>
+   
+2. Enter the difficulty level (1: very easy; 5: very difficult) of the project
+   between the <<< and >>> signs below (eg, <<<3>>>).
+
+   <<< 4 >>>
+
+3. Did you receive help from anyone? List their names, status (classmate, 
+   CS110 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+4. Provide a short description of how you approached each problem, issues you 
+   encountered, and how you resolved those issues.
+
+   Problem 1 (RSA Library)
+      Approach: defined encrypt and decrypt using the formula given in the directions.
+      Defined _primes(lo,hi) by setting an empty string.
+      Used a while loop to append the prime numbers to the list primes.
+      Defined keygen by using _primes(lo,hi) that is already defined.
+      Sampled two distinct random primes p and q from the list.
+      Set n and m to pq and (p − 1)(q − 1) given by the directions.
+      Created another list called primes2 that has prime numbers form range(2,m)
+      Chose a random prime e using from the list such that e does not divide m
+      Found d ∈ [1, m) such that ed mod m = 1.
+      Returned the tuple1(n, e, d).
+
+
+      Issues and resolution: when defining Keygen it says variable local e was referenced before assignment.
+      It took me a lot of tries to finally understand what it means.
+      I changed the logic behind my code and was able to get rid of this error pop up.
+      I was able to solve the problem.
+
+   Problem 2 (Keygen Program)
+      Approach: set lo and hi as command line argument.
+      Used rsa.Keygen from problem 1  to get the values of n,e,d.
+      Used the function stdio.write() to write the string of the values n,e,d.
+
+      Issues and resolution: I did not have any solution in this problem.
+
+   Problem 3 (Encryption Program)
+      Approach: Set n, e as command line argument. I set message to standard input.
+      Wrote the bitLength of n. Changed c to integer using ord().
+      Encrypted x as a width long binary string
+
+      Issues and resolution: The program would only encrypt the first word of the string
+       not the entire sentence. I got stuck trying to figure out what my problem was.
+       It turned out that I forgot to put another stdio.write() at the end of my code.
+
+   Problem 4 (Decryption Program)
+      Approach: Set n, d as command line argument. I set message to standard input.
+      Wrote the bitLength of n. Set v to length of message. Set y to decimal value of s.
+      Decrypted y. Changed c to characters using chr(). Wrote the string using stdio.write()
+
+      Issues and resolution: I did not face any issue in this problem.
+
+5. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   This project was a bit more challenging than the previous ones, however I managed to solve it and submit it.
+   I enjoyed this project a lot.
