@@ -1,60 +1,44 @@
 # RSA Cryptosystem
 
-A from-scratch implementation of the **RSA public-key cryptosystem** in Python — key generation, encryption, and decryption — built on the mathematical difficulty of factoring large semiprime numbers.
+A from-scratch, **educational** implementation of the RSA public-key cryptosystem in Python: key generation,
+encryption and decryption of text messages, written for an introductory programming course. It uses small primes so
+every step can be followed by hand; it is a learning tool, not secure cryptography.
 
-## Mathematical Foundation
+## How it works (`RSA Cryptosystem/rsa.py`)
 
 ```
-Key Generation:
-  1. Select two large primes p and q
-  2. Compute n = p · q  (the modulus)
-  3. Compute φ(n) = (p−1)(q−1)
-  4. Choose e coprime to φ(n)       → Public key:  (e, n)
-  5. Compute d ≡ e⁻¹ (mod φ(n))    → Private key: (d, n)
+Key generation  keygen(lo, hi)
+  1. List the primes in [lo, hi) by trial division and pick two distinct ones, p and q
+  2. n = p·q   and   m = (p − 1)(q − 1)
+  3. Pick a random prime e < m                      → public key  (n, e)
+  4. Search for d in [1, m) with e·d mod m = 1      → private key (n, d)
 
-Encryption:  c = m^e mod n
-Decryption:  m = c^d mod n
+Encryption  E(x) = x^e mod n          Decryption  D(y) = y^d mod n
 ```
 
-## Features
+Text is encrypted one character at a time: each character's code (`ord`) is encrypted and written as a
+fixed-width binary string (width = bit length of `n`), and decryption reverses the process.
 
-- **Key pair generation** with configurable bit length
-- **Miller-Rabin primality test** for fast, probabilistic large-prime selection
-- **Extended Euclidean Algorithm** for modular inverse computation
-- **Fast modular exponentiation** using Python's built-in `pow(base, exp, mod)`
-- Encrypt and decrypt arbitrary integer messages
-- Cryptographically secure random number generation via `secrets` module
+## Programs
 
-## Algorithms Implemented
-
-| Algorithm | Purpose |
+| File | What it does |
 |---|---|
-| Miller-Rabin | Probabilistic primality testing |
-| Extended Euclidean | Compute modular inverse (private key) |
-| Fast modular exponentiation | Efficient `m^e mod n` |
-| Sieve of Eratosthenes | Pre-filter small primes before Miller-Rabin |
+| `rsa.py` | Library: `keygen`, `encrypt`, `decrypt`, `bitLength`, `dec2bin`, `bin2dec` |
+| `keygen.py` | Generates and prints a key pair `n e d` from primes in a given range |
+| `encrypt.py` | Reads a message from standard input and writes it encrypted as a binary string |
+| `decrypt.py` | Reverses `encrypt.py` with the private key |
+| `distance.py`, `palindrome.py`, `reverse.py`, `sin.py`, `transpose.py` | Smaller exercises from the same assignment |
 
-## Technologies
+## Run
 
-- **Python**
-- Number theory: Miller-Rabin, Extended GCD
-- `secrets` module for secure randomness
-
-## Usage
+The programs use the course's standard I/O library (`stdio`, `stdrandom`).
 
 ```bash
-python rsa.py
+python keygen.py 50 100                      # prints n e d
+echo "Hello" | python encrypt.py <n> <e>     # prints the encrypted bits
+echo "<bits>" | python decrypt.py <n> <d>    # prints Hello
 ```
 
-```
-Generated public key  (e, n): (65537, 2734...8901)
-Generated private key (d, n): (1823...4471, 2734...8901)
+## Concepts
 
-Message:  42
-Encrypted: 1947...3820
-Decrypted: 42  ✓
-```
-
-## Security Notes
-
-This implementation demonstrates core RSA mechanics for educational purposes. For production use, always use a vetted library (e.g., `cryptography`) with proper OAEP padding and constant-time operations.
+Modular arithmetic · Euler's totient · modular inverse · public-key cryptography · binary encoding
